@@ -13,6 +13,13 @@
 //= require jquery
 //= require jquery_ujs
 //= require angular
-//= require angular-route
+//= require foundation
 //= require angular-rails-templates
-//= require_tree ../templates
+//= require angular/app
+//= require_tree ./angular/templates
+//= require_tree ./angular/modules
+//= require_tree ./angular/filters
+//= require_tree ./angular/directives
+//= require_tree ./angular/models
+//= require_tree ./angular/services
+//= require_tree ./angular/controllers
