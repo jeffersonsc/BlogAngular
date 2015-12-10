@@ -4,7 +4,7 @@
     "angular": "latest",
     "angular-route": "latest",
     "angular-resource": "latest",
-    "foundation": "latest",
+    "bootstrap": "latest",
     "fontawesome": "latest"
   }
 }
