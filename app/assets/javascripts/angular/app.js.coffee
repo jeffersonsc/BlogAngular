@@ -8,6 +8,26 @@ app.config(['$httpProvider', '$routeProvider', ($httpProvider, $routeProvider) -
 			templateUrl: 'assets/angular/templates/home/home.html',
 			controller: 'homeController'
 		})
+
+		.when('/posts/new', {
+			templateUrl: 'assets/angular/templates/posts/newPost.html',
+			controller: 'postsController'
+		})
+
+		.when('/posts/:id/edit', {
+			templateUrl: 'assets/angular/templates/posts/editPost.html',
+			controller: 'postsController'
+		})
+
+		.when('/posts/:id/delete', {
+			controller: 'postsController'
+		})
+
+		.when('/posts/:id', {
+			templateUrl: 'assets/angular/templates/posts/showPost.html',
+			controller: 'postsController'
+		})
+
 		.otherwise({
 			redirectTo: '/'
 		})

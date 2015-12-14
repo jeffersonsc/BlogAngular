@@ -1,1 +1,13 @@
 <h2>{{title}}</h2>
+<a href="#/posts/new">Novo post</a>
+<div ng-repeat="post in posts">
+	<h3><a href="#/posts/{{post.id}}">{{post.title}}</a></h3>
+	<p>
+		{{post.contents}}
+	</p>
+	<span>like {{post.upvotes}}</span>
+	<span>
+		(<a href="#/posts/{{post.id}}/edit">Editar</a>
+		<a href="#/posts/{{post.id}}/deletar">Deletar</a>)
+	</span>
+</div>
