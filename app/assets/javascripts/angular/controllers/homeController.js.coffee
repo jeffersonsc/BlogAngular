@@ -1,6 +1,8 @@
 angular.module('blog').controller('homeController', ['$scope', 'posts', ($scope, posts) -> 
 	$scope.title = 'Bem vindo - confira os posts'
 
-	$scope.posts = posts.data
+	posts.getAll().success((data) ->
+		$scope.posts = data
+	)
 
 ])

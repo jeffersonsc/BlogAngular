@@ -1,8 +1,10 @@
 angular.module('blog').controller('postsController', ['$scope', 'posts', '$routeParams', '$filter', '$location', ($scope, posts, $routeParams, $filter, $location) -> 
-	$scope.postID = parseInt($routeParams.id)
-	$scope.posts = posts.data
 	$scope.title = ''
 	$scope.contents = ''
+
+	posts.getPost($routeParams.id).success((data) ->
+			$scope.post = data
+		)
 
 	$scope.createPost = () ->
 		if $scope.title == '' and $scope.contents == ''
@@ -11,9 +13,6 @@ angular.module('blog').controller('postsController', ['$scope', 'posts', '$route
 		$scope.posts.push({title: $scope.title, contents: $scope.contents, upvotes: 0, id: $scope.posts.length + 1})
 		$location.path('/')
 
-	$scope.editPost = () ->
-		$scope.post = posts.data[$scope.postID]
 
-	$scope.showPost = () ->
-		$scope.post = posts.data[$scope.postID]
+		
 ])
