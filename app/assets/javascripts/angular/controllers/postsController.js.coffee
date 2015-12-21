@@ -1,18 +1,29 @@
 angular.module('blog').controller('postsController', ['$scope', 'posts', '$routeParams', '$filter', '$location', ($scope, posts, $routeParams, $filter, $location) -> 
-	$scope.title = ''
 	$scope.contents = ''
+	$scope.post = ''
 
 	posts.getPost($routeParams.id).success((data) ->
 			$scope.post = data
 		)
 
 	$scope.createPost = () ->
-		if $scope.title == '' and $scope.contents == ''
+		if $scope.post.title == ''
 			return false
 
-		$scope.posts.push({title: $scope.title, contents: $scope.contents, upvotes: 0, id: $scope.posts.length + 1})
-		$location.path('/')
+		posts.createPost($scope.post)
+			.success((data) ->
+				$scope.post.title = ''
+				$location.path('/')
+			)
 
+	$scope.updatePost = () ->
+		if $scope.post.title == ''
+			return false
 
+		posts.updatePost($routeParams.id, $scope.post)
+			.success((data) ->
+				$scope.post.title = ''
+				$location.path('/')
+			)			
 		
 ])

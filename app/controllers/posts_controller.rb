@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-	before_action :set_post, only: [:update, :show, :upvote]
+	before_action :set_post, only: [:update, :show, :upvote, :destroy]
 	def index
 		respond_to do |format|
 			format.json {render json: Post.all}
@@ -31,12 +31,18 @@ class PostsController < ApplicationController
 		end
 	end
 
+	def destroy
+		respond_to do |format|
+			format.json {render json: @post.destroy}
+		end
+	end
+
 	private
 	def set_post
 		@post = Post.find(params[:id])	
 	end
 
 	def post_params
-		params.require(:post).permit(:title, :link)
+		params.require(:post).permit(:title)
 	end
 end

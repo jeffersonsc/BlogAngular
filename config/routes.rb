@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   
   root to: 'home#index'
 
-  resources :posts, only: [:index, :create,:show] do
+  resources :posts, defaults: { format: 'json' } do
   	resources :comments, only: [:create, :show] do
   		member do
   			put '/upvote' => 'comments#upvote'
