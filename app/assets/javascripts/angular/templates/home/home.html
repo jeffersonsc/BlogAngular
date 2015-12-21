@@ -5,9 +5,9 @@
 	<p>
 		{{post.contents}}
 	</p>
-	<span>like {{post.upvotes}}</span>
+	<span><a href ng-click="upvotePost(post)">Gostei {{post.upvotes}}</a></span>
 	<span>
 		<a href="#/posts/{{post.id}}/edit" class="btn btn-xs btn-primary">Editar</a>
-		<a ng-click="deletePost(post.id)" ng-confirm-click="Deseja remover este post?" class="btn btn-xs btn-danger">Deletar</a>
+		<a ng-click="deletePost(post.id)" class="btn btn-xs btn-danger">Deletar</a>
 	</span>
 </div>

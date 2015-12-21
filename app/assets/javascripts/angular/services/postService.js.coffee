@@ -52,6 +52,15 @@ angular.module('blog').factory('posts',['$http', ($http) ->
 				console.log(status)
 			)
 
+	o.upvotePost = (post) ->
+		$http.put('/posts/' + post.id + '/upvote.json')
+			.success((data) -> 
+				post.upvotes += 1
+			)
+			.error((data, status) ->
+				console.log(status)
+			)
+
 
 	return o
 ])

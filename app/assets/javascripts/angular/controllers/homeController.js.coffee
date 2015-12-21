@@ -13,4 +13,7 @@ angular.module('blog').controller('homeController', ['$scope', 'posts', ($scope,
 			posts.data.splice(index, 1)
 		)
 
+	$scope.upvotePost = (post) ->
+		posts.upvotePost(post)
+
 ])
