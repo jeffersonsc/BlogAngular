@@ -1,6 +1,9 @@
-angular.module('blog').controller('homeController', ['$scope', 'posts', ($scope, posts) -> 
+angular.module('blog').controller('homeController', ['$scope', 'posts', 'comments', ($scope, posts, comments) -> 
 	$scope.title = 'Bem vindo - confira os posts'
 	$scope.posts = {}
+	$scope.showID = 0
+	$scope.comment = ''
+
 	posts.getAll().success((data) ->
 		$scope.posts = data
 	)
@@ -16,4 +19,6 @@ angular.module('blog').controller('homeController', ['$scope', 'posts', ($scope,
 	$scope.upvotePost = (post) ->
 		posts.upvotePost(post)
 
+	$scope.addComment = () ->
+		console.log('OK')
 ])

@@ -2,12 +2,33 @@
 <a href="#/posts/new">Novo post</a>
 <div ng-repeat="post in posts">
 	<h3><a href="#/posts/{{post.id}}">{{post.title}}</a></h3>
-	<p>
-		{{post.contents}}
-	</p>
-	<span><a href ng-click="upvotePost(post)">Gostei {{post.upvotes}}</a></span>
+	<span>
+		<a href="javascript:void(0);" ng-click="upvotePost(post)">Gostei ({{post.upvotes}})</a>
+		<a href="javascript:void(0);" ng-click="showID=post.id">Comentários ({{post.comments.length}})</a>
+	</span>
 	<span>
 		<a href="#/posts/{{post.id}}/edit" class="btn btn-xs btn-primary">Editar</a>
 		<a ng-click="deletePost(post.id)" class="btn btn-xs btn-danger">Deletar</a>
 	</span>
+	<div class="row" ng-show="post.id==showID">
+		<div class="col-sm-4">
+			<div ng-repeat="comment in post.comments">
+				<div class="col-sm-12">
+					- {{comment.body}} Autor {{'user'}}
+				</div>
+			</div>
+			<div class="col-sm-12">
+				<form name="post_{{post.id}}" ng-submit="addComment()">
+					<div class="form-group">
+							<textarea ng-model="comment.body" cols="50" rows="2" placeholder="Comentar" class="form-control">				
+							</textarea>
+							<input type="hidden" ng-model="comment.upvotes" value="0">
+							<input type="hidden" ng-model="comment.post_id" value="{{post.id}}">
+						</div>
+					</div>
+					<input type="submit" class="btn btn-xs btn-success" value="Comentar">
+				</form>
+			</div>
+		</div>
+	</div>
 </div>

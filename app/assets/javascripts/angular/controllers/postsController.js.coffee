@@ -1,6 +1,7 @@
 angular.module('blog').controller('postsController', ['$scope', 'posts', '$routeParams', '$filter', '$location', ($scope, posts, $routeParams, $filter, $location) -> 
 	$scope.contents = ''
 	$scope.post = ''
+	$scope.comment
 
 	posts.getPost($routeParams.id).success((data) ->
 			$scope.post = data
@@ -24,6 +25,5 @@ angular.module('blog').controller('postsController', ['$scope', 'posts', '$route
 			.success((data) ->
 				$scope.post.title = ''
 				$location.path('/')
-			)			
-		
+			)
 ])
